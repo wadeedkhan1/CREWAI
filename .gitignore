@@ -1,0 +1,40 @@
+# .gitignore for CREWAI projects
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+
+# Virtual environments
+venv*/
+.venv*/
+ENV/
+
+# Environment/config files
+.env*
+*.env*
+.envrc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.bak
+*~
+
+# VSCode
+.vscode/
+
+# Build
+build/
+dist/
+

@@ -1,0 +1,8 @@
+crewai
+langchain-openai
+serper-dev
+langchain-huggingface
+langchain-community
+duckduckgo-search
+huggingface_hub
+python-dotenv
