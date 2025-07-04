@@ -1,38 +1,35 @@
 search_for_public_info_task:
   description: >
-    Find public information about: {customer_name_or_business}.
+    Search online for public data about: {customer_name_or_business}.
 
-    Search only:
-    - Company websites
+    Focus on:
+    - Company website
     - LinkedIn
-    - Press releases
     - Business directories
+    - News or press releases
 
-    Return this JSON format:
+    Return results using this exact JSON format:
     {
       "results": [
         {
           "url": "https://example.com",
           "source": "LinkedIn",
-          "summary": "Marketing Director profile. Contact found."
+          "summary": "Marketing Director profile. Contact email listed."
         },
         {
           "url": "https://example.org",
-          "source": "Company site",
-          "summary": "Office location and leadership team listed."
+          "source": "Company Site",
+          "summary": "Company provides logistics software. Location: Chicago."
         }
       ]
     }
-
-    Do not explain. Just return the JSON.
   expected_output: >
-    JSON list of found public URLs and summaries. Format must match description exactly.
-
+    JSON list of URLs and summaries. No extra text.
   agent: lead_generation_agent
 
 extract_key_details_task:
   description: >
-    From the input data, extract and return this JSON:
+    Based on search results for {customer_name_or_business}, extract the following fields:
 
     {
       "company_name": "",
@@ -43,50 +40,49 @@ extract_key_details_task:
       "location": ""
     }
 
-    Use "null" if a field is not found. No comments, no extra text.
+    Use "null" if any field is missing. Output only the JSON.
   expected_output: >
-    A JSON object with customer details. Match format exactly.
-
+    A structured JSON object with 6 fields. No explanation or extra content.
   agent: lead_generation_agent
 
 evaluate_lead_potential_task:
   description: >
-    Use extracted data to rate the lead.
+    Evaluate the lead quality for {customer_name_or_business} based on the extracted details.
 
-    Return this JSON:
+    Use the target industry: "{target_industry}"
+
+    Return the evaluation in this JSON format:
     {
       "score": 0,
-      "fit": "low/medium/high",
+      "fit": "low" | "medium" | "high",
       "notes": ""
     }
 
     Scoring:
     - Start at 100
-    - Subtract 20 if email is missing
-    - Subtract 15 if company_size is missing
-    - Subtract 15 if industry is unrelated
+    - -20 if no email
+    - -15 if company size is missing
+    - -20 if industry does not match target industry
 
-    Do not explain. Just return JSON.
+    Only return JSON. Do not explain the logic.
   expected_output: >
-    Lead rating JSON with score (0–100), fit, and notes.
-
+    JSON lead evaluation. Must match the exact format given.
   agent: lead_generation_agent
 
 summarize_findings_task:
   description: >
-    Use previous outputs to write a short sales summary.
+    Use the extracted info and lead evaluation for {customer_name_or_business} to create a structured summary.
 
-    Format:
-    - Company: Example Inc.
-    - Contact: John Doe (email@example.com)
-    - Industry: SaaS
-    - Size: 51–200
-    - Location: San Francisco
-    - Fit Score: 90 (High Fit)
-    - Notes: Good fit. Valid contact found. SaaS industry.
+    Use this bullet format:
+    - Company: <company_name>
+    - Contact: <contact_name> (<email>)
+    - Industry: <industry>
+    - Size: <company_size>
+    - Location: <location>
+    - Fit Score: <score> (<fit>)
+    - Notes: <notes>
 
-    Return the summary in that exact bullet format.
+    Return only the formatted bullet list.
   expected_output: >
-    Bullet-point summary. Match format exactly. No intro or explanation.
-
+    Bullet-point summary. No extra words or introduction.
   agent: lead_generation_agent
