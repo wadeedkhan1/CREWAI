@@ -1,4 +1,0 @@
-crewai
-langchain-groq
-python-dotenv
-requests 

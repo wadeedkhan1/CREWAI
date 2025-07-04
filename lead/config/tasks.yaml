@@ -1,0 +1,92 @@
+search_for_public_info_task:
+  description: >
+    Find public information about: {customer_name_or_business}.
+
+    Search only:
+    - Company websites
+    - LinkedIn
+    - Press releases
+    - Business directories
+
+    Return this JSON format:
+    {
+      "results": [
+        {
+          "url": "https://example.com",
+          "source": "LinkedIn",
+          "summary": "Marketing Director profile. Contact found."
+        },
+        {
+          "url": "https://example.org",
+          "source": "Company site",
+          "summary": "Office location and leadership team listed."
+        }
+      ]
+    }
+
+    Do not explain. Just return the JSON.
+  expected_output: >
+    JSON list of found public URLs and summaries. Format must match description exactly.
+
+  agent: lead_generation_agent
+
+extract_key_details_task:
+  description: >
+    From the input data, extract and return this JSON:
+
+    {
+      "company_name": "",
+      "contact_name": "",
+      "email": "",
+      "industry": "",
+      "company_size": "",
+      "location": ""
+    }
+
+    Use "null" if a field is not found. No comments, no extra text.
+  expected_output: >
+    A JSON object with customer details. Match format exactly.
+
+  agent: lead_generation_agent
+
+evaluate_lead_potential_task:
+  description: >
+    Use extracted data to rate the lead.
+
+    Return this JSON:
+    {
+      "score": 0,
+      "fit": "low/medium/high",
+      "notes": ""
+    }
+
+    Scoring:
+    - Start at 100
+    - Subtract 20 if email is missing
+    - Subtract 15 if company_size is missing
+    - Subtract 15 if industry is unrelated
+
+    Do not explain. Just return JSON.
+  expected_output: >
+    Lead rating JSON with score (0–100), fit, and notes.
+
+  agent: lead_generation_agent
+
+summarize_findings_task:
+  description: >
+    Use previous outputs to write a short sales summary.
+
+    Format:
+    - Company: Example Inc.
+    - Contact: John Doe (email@example.com)
+    - Industry: SaaS
+    - Size: 51–200
+    - Location: San Francisco
+    - Fit Score: 90 (High Fit)
+    - Notes: Good fit. Valid contact found. SaaS industry.
+
+    Return the summary in that exact bullet format.
+  expected_output: >
+    Bullet-point summary. Match format exactly. No intro or explanation.
+
+  agent: lead_generation_agent
