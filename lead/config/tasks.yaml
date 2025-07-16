@@ -71,7 +71,7 @@ evaluate_lead_potential_task:
 
 summarize_findings_task:
   description: >
-    Use the extracted info and lead evaluation for {customer_name_or_business} to create a structured summary.
+    Use the extracted info and lead evaluation for {customer_name_or_business} to create a structured summary in bullet points only.
 
     Use this bullet format:
     - Company: <company_name>
@@ -84,5 +84,5 @@ summarize_findings_task:
 
     Return only the formatted bullet list.
   expected_output: >
-    Bullet-point summary. No extra words or introduction.
+    Summary in bullet points. No extra words or introduction.
   agent: lead_generation_agent

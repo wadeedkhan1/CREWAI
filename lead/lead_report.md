@@ -1,1 +1,7 @@
-- Company: Tesla, SpaceX, Neuralink, X (Twitter), Zip2 - Contact: Elon Musk (info@spacex.com) - Industry: Automotive, Aerospace, Technology, Social Media - Size: Large (estimated) - Location: null - Fit Score: 100 (high) - Notes: null
+- Company: Spotify
+- Contact: null (office@spotify.com)
+- Industry: Musicians
+- Size: 5,001-10,000 employees
+- Location: Stockholm, Stockholm County
+- Fit Score: 80 (high)
+- Notes: The provided industry was 'Musicians' but the actual industry is 'Music Streaming / Digital Media', resulting in a slightly lower score. Still a high-quality lead.
