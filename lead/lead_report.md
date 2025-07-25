@@ -1,7 +1,1 @@
-- Company: Spotify
-- Contact: null (office@spotify.com)
-- Industry: Musicians
-- Size: 5,001-10,000 employees
-- Location: Stockholm, Stockholm County
-- Fit Score: 80 (high)
-- Notes: The provided industry was 'Musicians' but the actual industry is 'Music Streaming / Digital Media', resulting in a slightly lower score. Still a high-quality lead.
+- Company: Tesla - Contact: Elon Musk (null) - Industry: Automotive/Clean Energy - Size: 100,000+ - Location: Austin, Texas - Fit Score: 65 (high) - Notes: No email (-20), Company size available, Industry matches target industry, Elon Musk is CEO of Tesla.
